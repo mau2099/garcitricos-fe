@@ -1,0 +1,12 @@
+{
+  "app": {
+    "containers": {
+      "dashboard": {
+        "meta": {
+          "description": "There was an error while executing the action. {detail}",
+          "title": "Dashboard"
+        }
+      }
+    }
+  }
+}

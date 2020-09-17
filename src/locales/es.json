@@ -1,0 +1,12 @@
+{
+  "app": {
+    "containers": {
+      "dashboard": {
+        "meta": {
+          "description": "",
+          "title": ""
+        }
+      }
+    }
+  }
+}

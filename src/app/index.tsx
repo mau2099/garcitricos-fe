@@ -8,28 +8,39 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
-import { GlobalStyle } from '../styles/global-styles';
+import { GlobalStyle } from 'styles/global-styles';
+import { ThemeProvider } from '@material-ui/core';
+import { theme } from 'styles/custom-theme';
 
-import { HomePage } from './containers/HomePage/Loadable';
-import { NotFoundPage } from './containers/NotFoundPage/Loadable';
+import { AppLayout } from './components/AppLayout';
+import { Dashboard } from './containers/Dashboard/Loadable';
+import { NotFoundPage } from './components/NotFoundPage/Loadable';
+
+import { ROUTES } from 'app/routes';
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-      >
-        <meta name="description" content="A React Boilerplate application" />
-      </Helmet>
-
-      <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'} component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <GlobalStyle />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Helmet titleTemplate="%s - Garcitricos" defaultTitle="Garcitricos">
+          <meta name="description" content="Garcitricos ©" />
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width"
+          />
+        </Helmet>
+        <AppLayout>
+          <Switch>
+            <Redirect exact from={ROUTES.HOME} to={ROUTES.DASHBOARD} />
+            <Route extact path={ROUTES.DASHBOARD} component={Dashboard} />
+            <Route component={NotFoundPage} />
+          </Switch>
+          <GlobalStyle />
+        </AppLayout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

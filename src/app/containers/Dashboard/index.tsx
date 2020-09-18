@@ -16,7 +16,7 @@ import {
   selectCommoditiesLoading,
 } from 'app/containers/GlobalSaga/selectors';
 
-import { Container, Grid, Paper, CircularProgress } from '@material-ui/core';
+import { Box, Grid, Paper, CircularProgress } from '@material-ui/core';
 
 export const Dashboard = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -34,25 +34,26 @@ export const Dashboard = () => {
     dispatch(actions.loadCommoditiesList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <Helmet>
         <title>{translate(scope.meta.title)}</title>
         <meta name="description" content={translate(scope.meta.description)} />
       </Helmet>
-      <Container maxWidth="lg" style={{ backgroundColor: 'red' }}>
+      <Box maxWidth="lg">
         <Grid container spacing={3}>
           {/* Chart */}
           <Grid item xs={12} md={6} lg={9}>
-            <Paper>'Chart'</Paper>
+            <Paper>Chart</Paper>
           </Grid>
           {/* Recent Deposits */}
           <Grid item xs={12} md={6} lg={3}>
-            <Paper>'Deposits'</Paper>
+            <Paper>Deposits</Paper>
           </Grid>
           {/* Recent Orders */}
           <Grid item xs={12}>
-            <Paper>'Orders'</Paper>
+            <Paper>Orders</Paper>
           </Grid>
         </Grid>
         {commoditiesLoading ? (
@@ -60,7 +61,7 @@ export const Dashboard = () => {
         ) : (
           <pre>{JSON.stringify(commoditiesList, null, 2)}</pre>
         )}
-      </Container>
+      </Box>
     </>
   );
 };

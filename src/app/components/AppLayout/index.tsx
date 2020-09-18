@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import { TopBar } from './TopBar';
 import { SideBar } from './SideBar';
@@ -10,9 +10,7 @@ export const AppLayout = props => {
     <>
       <TopBar />
       <SideBar />
-      <Box maxWidth="lg" style={{ backgroundColor: 'red', height: '100%' }}>
-        {props.children}
-      </Box>
+      <Container maxWidth="lg">{props.children}</Container>
       <Footer />
     </>
   );

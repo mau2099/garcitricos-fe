@@ -1,4 +1,5 @@
 import { DashboardState } from 'app/containers/Dashboard/types';
+import { GlobalSagaState } from 'app/containers/GlobalSaga/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -7,5 +8,6 @@ import { DashboardState } from 'app/containers/Dashboard/types';
 */
 export interface RootState {
   dashboard?: DashboardState;
+  globalSaga?: GlobalSagaState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

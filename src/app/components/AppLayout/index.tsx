@@ -1,18 +1,18 @@
 import React from 'react';
+import { Box } from '@material-ui/core';
+
 import { TopBar } from './TopBar';
 import { SideBar } from './SideBar';
 import { Footer } from './Footer';
 
-import { Container } from '@material-ui/core';
 export const AppLayout = props => {
   return (
     <>
       <TopBar />
       <SideBar />
-
-      <Container maxWidth="lg" style={{ backgroundColor: 'red' }}>
-        >{props.children}
-      </Container>
+      <Box maxWidth="lg" style={{ backgroundColor: 'red', height: '100%' }}>
+        {props.children}
+      </Box>
       <Footer />
     </>
   );

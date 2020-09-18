@@ -19,9 +19,15 @@ import { AppLayout } from './components/AppLayout';
 import { Dashboard } from './containers/Dashboard/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 
+import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
+import { reducer, sliceKey } from './containers/GlobalSaga/slice';
+import { globalSaga } from './containers/GlobalSaga/saga';
+
 import { ROUTES } from 'app/routes';
 
 export function App() {
+  useInjectReducer({ key: sliceKey, reducer: reducer });
+  useInjectSaga({ key: sliceKey, saga: globalSaga });
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

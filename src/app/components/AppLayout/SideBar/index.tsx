@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { ROUTES } from 'app/routes';
 
 import {
   Drawer,
@@ -10,40 +9,14 @@ import {
   ListItemIcon,
   CardMedia,
 } from '@material-ui/core';
-import { BarChart, Dashboard as DashboardIcon } from '@material-ui/icons';
 
 import Logo from 'assets/logo.png';
+
+import { menuItems } from 'app/components/AppLayout/MenuItems';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { actions } from 'app/containers/GlobalSaga/slice';
 import { selectMenuState } from 'app/containers/GlobalSaga/selectors';
-
-interface SideBarItem {
-  tooltip: string;
-  route: any;
-  icon?: any;
-  className?: string;
-  handleClick: (history) => void;
-}
-
-const sideBarItems: SideBarItem[] = [
-  {
-    tooltip: 'Dashboard',
-    route: ROUTES.DASHBOARD,
-    icon: <DashboardIcon />,
-    handleClick: history => {
-      history.push(ROUTES.DASHBOARD);
-    },
-  },
-  {
-    tooltip: 'Reports',
-    route: ROUTES.REPORTS,
-    icon: <BarChart />,
-    handleClick: history => {
-      history.push(ROUTES.REPORTS);
-    },
-  },
-];
 
 export const SideBar = () => {
   const menuState = useSelector(selectMenuState);
@@ -66,7 +39,7 @@ export const SideBar = () => {
       <CardMedia image={Logo} />
       <Divider />
       <List>
-        {sideBarItems.map(item => (
+        {menuItems.map(item => (
           <ListItem
             button
             alignItems="center"

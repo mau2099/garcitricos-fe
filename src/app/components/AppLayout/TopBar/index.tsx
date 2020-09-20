@@ -25,7 +25,7 @@ export const TopBar = () => {
     dispatch(actions.setMenuState(!menuState));
   };
   return (
-    <AppBar position="static" className="topbar">
+    <AppBar position="sticky" className="topbar">
       <Toolbar variant="regular" className="toolbar">
         <IconButton
           color="inherit"

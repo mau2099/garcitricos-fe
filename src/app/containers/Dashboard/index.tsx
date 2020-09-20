@@ -16,7 +16,7 @@ import {
   selectCommoditiesLoading,
 } from 'app/containers/GlobalSaga/selectors';
 
-import { Box, Grid, Paper, CircularProgress } from '@material-ui/core';
+import { Grid, Paper, CircularProgress } from '@material-ui/core';
 
 export const Dashboard = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -41,27 +41,29 @@ export const Dashboard = () => {
         <title>{translate(scope.meta.title)}</title>
         <meta name="description" content={translate(scope.meta.description)} />
       </Helmet>
-      <Box maxWidth="lg">
-        <Grid container spacing={3}>
-          {/* Chart */}
-          <Grid item xs={12} md={6} lg={9}>
-            <Paper>Chart</Paper>
-          </Grid>
-          {/* Recent Deposits */}
-          <Grid item xs={12} md={6} lg={3}>
-            <Paper>Deposits</Paper>
-          </Grid>
-          {/* Recent Orders */}
-          <Grid item xs={12}>
-            <Paper>Orders</Paper>
-          </Grid>
+      <Grid container>
+        {/* Chart */}
+        <Grid item xs={12} md={6} lg={9}>
+          <Paper>Chart</Paper>
         </Grid>
-        {commoditiesLoading ? (
-          <CircularProgress />
-        ) : (
-          <pre>{JSON.stringify(commoditiesList, null, 2)}</pre>
-        )}
-      </Box>
+        {/* Recent Deposits */}
+        <Grid item xs={12} md={6} lg={3}>
+          <Paper>Deposits</Paper>
+        </Grid>
+        {/* Recent Orders */}
+        <Grid item xs={12}>
+          <Paper>Orders</Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper>
+            {commoditiesLoading ? (
+              <CircularProgress />
+            ) : (
+              <pre>{JSON.stringify(commoditiesList, null, 2)}</pre>
+            )}
+          </Paper>
+        </Grid>
+      </Grid>
     </>
   );
 };

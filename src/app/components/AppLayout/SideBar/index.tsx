@@ -54,6 +54,7 @@ export const SideBar = () => {
     if (event.type === 'keydown' && event.key !== 'Escape') return;
     dispatch(actions.setMenuState(open));
   };
+
   return (
     <Drawer
       variant="temporary"

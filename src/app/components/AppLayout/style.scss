@@ -1,0 +1,9 @@
+@import 'styles/mixins/_rem.scss';
+.app-layout {
+  height: 100vh;
+  &__route-container {
+    height: calc(100vh - 9.5rem);
+    overflow: auto;
+    margin: 1rem 2rem;
+  }
+}

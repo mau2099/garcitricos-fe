@@ -2,7 +2,7 @@
 .app-layout {
   height: 100vh;
   &__route-container {
-    height: calc(100vh - 9.5rem);
+    max-height: calc(100vh - 9.5rem);
     overflow: auto !important;
     margin: 1rem 2rem;
   }

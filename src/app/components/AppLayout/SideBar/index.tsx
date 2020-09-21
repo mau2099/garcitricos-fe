@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
+  ListItemText,
   CardMedia,
 } from '@material-ui/core';
 
@@ -47,7 +48,7 @@ export const SideBar = () => {
           >
             <ListItemIcon>{item.icon}</ListItemIcon>
 
-            {/* <ListItemText primary="Dashboard" /> */}
+            <ListItemText primary={item.tooltip} />
           </ListItem>
         ))}
       </List>

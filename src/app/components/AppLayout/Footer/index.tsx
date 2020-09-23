@@ -15,16 +15,14 @@ export const Footer = () => {
   return (
     <Box bgcolor="primary.main" className="applayout__footer">
       <BottomNavigation showLabels>
-        {menuItems.map(item => (
+        {menuItems.map((item, index) => (
           <BottomNavigationAction
+            key={index}
             onClick={() => item.handleClick(history)}
             icon={item.icon}
             label={item.tooltip}
           />
         ))}
-        {/* <BottomNavigationAction label="Recents" icon={<Restore />} />
-        <BottomNavigationAction label="Favorites" icon={<Favorite />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOn />} /> */}
       </BottomNavigation>
 
       {/* <Typography variant="body2" color="textSecondary" align="center">

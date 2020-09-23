@@ -40,8 +40,9 @@ export const SideBar = () => {
       <CardMedia image={Logo} />
       <Divider />
       <List>
-        {menuItems.map(item => (
+        {menuItems.map((item, index) => (
           <ListItem
+            key={index}
             button
             alignItems="center"
             onClick={() => item.handleClick(history)}

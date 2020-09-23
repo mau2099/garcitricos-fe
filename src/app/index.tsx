@@ -17,6 +17,7 @@ import { theme } from 'styles/custom-theme';
 
 import { AppLayout } from './components/AppLayout';
 import { Dashboard } from './containers/Dashboard/Loadable';
+import { Sales } from './containers/Sales/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
@@ -40,8 +41,9 @@ export function App() {
         </Helmet>
         <AppLayout>
           <Switch>
-            <Redirect exact from={ROUTES.HOME} to={ROUTES.DASHBOARD} />
+            <Redirect exact from={ROUTES.HOME} to={ROUTES.SALES} />
             <Route extact path={ROUTES.DASHBOARD} component={Dashboard} />
+            <Route extact path={ROUTES.SALES} component={Sales} />
             <Route component={NotFoundPage} />
           </Switch>
           <GlobalStyle />

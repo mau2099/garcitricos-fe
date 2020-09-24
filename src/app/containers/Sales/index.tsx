@@ -14,7 +14,18 @@ import { reducer, sliceKey, actions } from './slice';
 import { selectSalesList, selectSalesLoading } from './selectors';
 import { salesSaga } from './saga';
 
-import { Grid, Paper, CircularProgress } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  CircularProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from '@material-ui/core';
 
 interface Props {}
 
@@ -34,23 +45,60 @@ export const Sales = memo((props: Props) => {
     dispatch(actions.loadSalesList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       <Helmet>
         <title>Sales</title>
         <meta name="description" content="Description of Sales" />
       </Helmet>
-      <Grid container>
-        <Grid item xs={12}>
-          <Paper>
-            {salesLoading ? (
-              <CircularProgress />
-            ) : (
-              <pre>{JSON.stringify(sales, null, 2)}</pre>
-            )}
-          </Paper>
-        </Grid>
-      </Grid>
+      <Paper>
+        {salesLoading ? (
+          <CircularProgress />
+        ) : (
+          sales.length > 0 && (
+            <TableContainer>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {Object.entries(sales[0]).map(([key, value], index) => {
+                      return (
+                        <TableCell key={index} align="center">
+                          {key}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {sales.map(sale => {
+                    return (
+                      <TableRow hover role="checkbox" key={sale.id}>
+                        {Object.entries(sale).map(([key, value], index) => {
+                          return (
+                            <TableCell key={index} align="center">
+                              <pre>{JSON.stringify(value, null, 2)}</pre>
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          )
+        )}
+        {/* <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        /> */}
+      </Paper>
     </>
   );
 });
